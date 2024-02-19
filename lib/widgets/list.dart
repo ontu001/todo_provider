@@ -19,7 +19,7 @@ class listTile extends StatelessWidget{
                 onTap: (){
                   dataModel.toggleCheck(dataModel.allToDo[index]);
                 },
-                child: Text(dataModel.allToDo[index].title,style: TextStyle(color: kCommonColor,fontSize: 18.0,fontWeight: FontWeight.w800),)),
+                child: Text(dataModel.allToDo[index].title,style: TextStyle(color: kCommonColor,fontSize: 18.0,fontWeight: FontWeight.w800,decoration: dataModel.allToDo[index].isDone == true ? TextDecoration.lineThrough : TextDecoration.none),)),
             leading: MSHCheckbox(
               size: 20.0,
               colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
@@ -32,7 +32,9 @@ class listTile extends StatelessWidget{
                 dataModel.toggleCheck(dataModel.allToDo[index]);
               },
             ),
-            trailing: TextButton(onPressed: (){},child: Text('Delete',style: TextStyle(color: Colors.red,fontWeight: FontWeight.w900),),),
+            trailing: TextButton(onPressed: (){
+              dataModel.removeToDo(dataModel.allToDo[index]);
+            },child: Text('Delete',style: TextStyle(color: Colors.red,fontWeight: FontWeight.w900),),),
 
           );
         },
